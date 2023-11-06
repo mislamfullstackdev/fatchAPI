@@ -1,11 +1,11 @@
-function main(){
-    fetchGitUserInfo("themeexpress")
-    .then((userInfo) => createView(userInfo))
-    .then((view) => displayView(view))
-    .catch((error) => {
-        // Promise
-        console.log(`Unexpected error occured ({$error})`);
-    });
+async function main(){
+    try{
+        const userInfo = await fetchGitUserInfo("js-primer-example");
+        const view = createView(userInfo)
+        displayView(view)
+    }catch(error){
+        console.error(`error occurs (${error})`);
+    }
 }
 
 function fetchGitUserInfo(userId){
