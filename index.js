@@ -1,6 +1,7 @@
 async function main(){
     try{
-        const userInfo = await fetchGitUserInfo("js-primer-example");
+        const userId = getUserId()
+        const userInfo = await fetchGitUserInfo(userId);
         const view = createView(userInfo)
         displayView(view)
     }catch(error){
@@ -36,6 +37,10 @@ function createView(userInfo){
 function displayView(view){
     const result = document.getElementById("result")
     result.innerHTML = view;
+}
+
+function getUserId(){
+    return document.getElementById("userId").value;
 }
 
 // escape special character and html
